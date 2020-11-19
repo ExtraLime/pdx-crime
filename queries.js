@@ -5,14 +5,30 @@ const { newGeo } = require('./newGeo.js');
 const geo = require('./data/geo-json.json');
 
 
+const client = new pg.Pool({connectionString:"postgres://admin:0wqzk1e3@35.230.82.92:12301/pdxcrime"})
+
+client.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack)
+  }
+  client.query('SELECT NOW()', (err, result) => {
+    release()
+    if (err) {
+      return console.error('Error executing query', err.stack)
+    }
+    console.log(result.rows)
+  });
+});
+
+
 //
-const client = new pg.Client(process.env.yugaURI)
+// const client = new pg.Client(process.env.yugaURI)
 
 
 if (!client){
   console.log("no client")
 } 
-client.connect().then(()=>console.log('client connected')).catch(err => console.log(err))
+// client.connect().then(()=>console.log('client connected')).catch(err => console.log(err))
 
 
 
