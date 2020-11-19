@@ -5,41 +5,28 @@ const { newGeo } = require('./newGeo.js');
 const geo = require('./data/geo-json.json');
 
 
-
+//
 const client = new pg.Client(process.env.yugaURI)
 
 
 if (!client){
   console.log("no client")
 } 
-client.connect()
+client.connect().then(()=>console.log('client connected')).catch(err => console.log(err))
 
 
 
 const getInitCrimeTweets = (request, response) => {
 
   const q = "with t1 as (select count(location),location from twitter_query where entity like 'Portland Police log' group by location order by 1 desc limit 6) select * from t1 where location NOT IN ('Unknown');"
-  client.query(q, (error, results) => {
-    if (error) {
-      throw error
-      console.log(error)
-    }
 
-    response.status(200).json(results.rows)
-    
-  });
+client.query(q, (err, results) => response.status(200).json(results.rows))
 };
 
 const getCrimeTweets = (request, response) => {
   const crime = request.params.crime;
-
-  client.query(`with t1 as (select count(location),location from twitter_query where entity like 'Portland Police log' and category like '${crime}' group by location order by 1 desc limit 6) select * from t1 where location NOT IN ('Unknown');`, (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-
-  });
+  const q = `with t1 as (select count(location),location from twitter_query where entity like 'Portland Police log' and category like '${crime}' group by location order by 1 desc limit 6) select * from t1 where location NOT IN ('Unknown');`
+client.query(q, (err, results) => response.status(200).json(results.rows))
 };
 
 const getAllMapTweets = (request, response) => {
