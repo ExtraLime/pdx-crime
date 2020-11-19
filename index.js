@@ -6,7 +6,7 @@ const db = require('./queries.js');
 const dotenv = require('dotenv');
 dotenv.config();
 const path = require('path');
-const PORT = 5000
+
 
 
 
