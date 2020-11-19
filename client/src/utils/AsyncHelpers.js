@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+// http://${domain}:${PORT} assign and prefix to api route
 
 export async function fetchMapData(setMapData) {
   const result = await axios(
