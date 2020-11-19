@@ -5,7 +5,8 @@ const { newGeo } = require('./newGeo.js');
 const geo = require('./data/geo-json.json');
 
 
-const client = new pg.Client(process.env.yugaURL)
+
+const client = new pg.Client(process.env.yugaURI)
 
 
 if (!client){
@@ -23,7 +24,7 @@ const getInitCrimeTweets = (request, response) => {
       throw error
       console.log(error)
     }
-    console.log(results)
+
     response.status(200).json(results.rows)
     
   });
@@ -36,7 +37,6 @@ const getCrimeTweets = (request, response) => {
     if (error) {
       throw error
     }
-    console.log(results)
     response.status(200).json(results.rows)
 
   });
@@ -59,7 +59,6 @@ const getHoodTweets = (request, response) => {
     if (error) {
       throw error
     }
-    
     response.status(200).json(results.rows)
 
   });
@@ -70,7 +69,6 @@ const getStartHood = (request, response) => {
     if (error) {
       throw error
     }
-    console.log(results.rows)
     response.status(200).json(results.rows)
 
   });

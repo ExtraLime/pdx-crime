@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const domain = 'localhost'
-const PORT = 5000
+
 
 export async function fetchMapData(setMapData) {
   const result = await axios(
-    `http://${domain}:${PORT}/map-tweets`,
+    `/map-tweets`,
   );
   setMapData(result.data);
 }
@@ -15,7 +14,7 @@ export async function fetchCrimeChartData(setData, crime) {
     crime = "initcrime"
   }
   const result = await axios(
-    `http://${domain}:${PORT}/${crime}`,
+    `/${crime}`,
   );
   setData(result.data);
 }
@@ -25,7 +24,7 @@ export async function fetchNeighborhoodsData(setNData, hood) {
     hood = "inithood"
   }
   const result = await axios(
-    `http://${domain}:${PORT}/neighborhood/${hood}`,
+    `/neighborhood/${hood}`,
   );
   setNData(result.data);
 }
@@ -35,7 +34,7 @@ export async function fetchChoroplethMapData(setCMapData, crime) {
     crime = "chorodata"
   }
   const result = await axios(
-    `http://${domain}:${PORT}/choro/${crime}`,
+    `/choro/${crime}`,
   );
   setCMapData(result.data);
 }
@@ -49,7 +48,7 @@ export async function fetchDateRangeData(setDateRangeData) {
   const eD = await endDate.toISOString().slice(0,10);
     
   const result = await axios(
-    `http://${domain}:${PORT}/range/${sD}/${eD}`,
+    `/range/${sD}/${eD}`,
   );
   setDateRangeData(result.data);
 }
@@ -63,14 +62,14 @@ export async function fetchNewDateRangeData(setDateRangeData,dateRange) {
   }
     
   const result = await axios(
-    `http://${domain}:${PORT}/range/${sD}/${eD}`,
+    `/range/${sD}/${eD}`,
   );
   setDateRangeData(result.data);
 }
 
 export async function fetchHoodCrimeData(setHoodCrimeData) {
   const result = await axios(
-    `http://${domain}:${PORT}/hoodCrime`,
+    `/hoodCrime`,
   );
   setHoodCrimeData(result.data);
 }
@@ -84,7 +83,7 @@ export async function fetchNewHoodCrimeData(setHoodCrimeData,specs) {
   }
     
   const result = await axios(
-    `http://${domain}:${PORT}/detailed/${sD}/${eD}/${timeHood}/${timeCrime}`,
+    `/detailed/${sD}/${eD}/${timeHood}/${timeCrime}`,
   );
   setHoodCrimeData(result.data);
 }
