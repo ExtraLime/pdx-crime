@@ -1,0 +1,410 @@
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
+.container {
+  position: absolute;
+  display: grid;
+  grid-template-rows: repeat(1fr,11);
+  grid-template-columns: 1fr;
+  grid-gap: 0px;
+  grid-template-areas:
+    "Header"
+    "EventDropdown"  
+    "CrimeMap"
+    "CrimeDropdown"
+    "ChoroplethMap"
+    "CrimeBarChart"
+    "NeighborhoodDropdown"
+    "NeighborhoodBarChart"
+    "DateRange"
+    "LineChart"
+    "HoodCrime"
+    "HoodCrimeMap";  
+  margin: 0px auto;
+  align-content: stretch;
+  object-fit:cover;
+}
+.dateSelect {
+  grid-area:DateRange;
+  display:inline-block;
+  justify-content:center;     
+  align-items:center;
+  align-items: center;
+  background-color: #131924;
+  box-shadow: rgba(0,0,0,.43) 0 2px 10px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  height: 60px;
+  justify-content: center;
+  margin: 40px 0px 40px 0px;
+  
+}
+Header {
+  position:fixed;
+  z-index:5;
+  width:100%;
+  background: #000000;  
+  display: grid;   
+}
+
+.entity {
+  position:relative;
+  margin-top:100px;
+}
+
+.nav-li {
+  position:relative;  
+  float: right;
+  list-style-type: none;
+}
+.tline {
+  grid-area:LineChart;
+}
+
+.nav-li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "header-logo main-nav";
+  align-content:stretch;
+  width:100%;  
+}
+
+.header-logo {
+  grid-area: "header-logo";
+  font-family: Arial;
+  text-align:right;
+}
+
+.leaflet-container {
+  height: 75vh;
+  width: 100%;
+  justify-content:center;
+  position:relative;
+  
+     
+}
+
+.crime-map {
+  align-items: center;
+  justify-content:space-between;
+  width: 100%;
+  padding: 30px 40px 30px 40px;
+  margin: 0px 0px 0px 0px;
+  z-index:0;
+  
+}
+
+
+.choropleth-container {
+  align-items: center;
+  justify-content:space-between;
+  width: 100%;
+  padding: 0px 40px 30px 40px;
+  margin: 0px 0px 0px 0px;
+  z-index:0;
+  
+}
+
+label {
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dropdown-container {
+  align-items: center;
+  background-color: #131924;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  height: 60px;
+  justify-content: center; 
+}
+
+select {
+  box-sizing: border-box;
+  color:#c1ccde;
+  font-size: 1rem;
+  font-weight:400;
+  background: transparent;
+  height: 2.6rem;
+  border: 1px solid rgba(193,204,222,.2);
+  line-height: 4rem;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-left: 2.5rem;
+  padding-left: 0;
+  text-align: center;
+  text-size-adjust: 100%;
+  width: 15rem;
+  -webkit-tap-highlight-color: (0,0,0,0)
+}
+
+.hood-crime {
+  grid-area:HoodCrime;
+  display:grid;
+  grid-template-areas:
+  "timehood"
+  "timecrime";  
+  align-items:inline-block;
+}
+.hood-crime-map {
+  grid-area:HoodCrimeMap;
+  padding:40px;
+}
+.tc-dropdown {
+  grid-area:timecrime;
+  align-items: center;
+  background-color: #131924;
+  color: #fff;
+  height: 60px;
+  justify-content: center;
+  position:relative;
+}
+.th-dropdown {
+  grid-area:timehood;
+  align-items: center;
+  background-color: #131924;
+  color: #fff;
+  height: 60px;
+  justify-content: center;
+  position:relative;
+}
+
+.horizontalbar {
+  height: 70vh;
+  width: auto;
+  column-fill: auto;
+  align-content:stretch;
+  flex-wrap:wrap;    
+}
+
+.bar {
+  height: 70vh;
+  width: auto;
+  column-fill: auto;
+  align-content:stretch;
+  flex-wrap:wrap;    
+}
+
+
+
+  /* media queries */
+  @media screen and (min-width: 750px) {
+
+    .container {
+      position: absolute;
+      display: grid;
+      grid-template-rows: repeat(1fr,9);
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0px;
+      grid-template-areas:
+        "Header Header"
+        "EventDropdown EventDropdown"  
+        "CrimeMap CrimeMap"
+        "CrimeDropdown CrimeDropdown"
+        "ChoroplethMap CrimeBarChart"
+        "NeighborhoodDropdown NeighborhoodDropdown"
+        "NeighborhoodBarChart NeighborhoodBarChart"
+        "DateRange HoodCrime"
+        "LineChart HoodCrimeMap";    
+      align-content: stretch;
+      object-fit:cover;
+      width: 100%;
+    }
+    Header {
+      position:fixed;
+      z-index:5;
+      background: #000000;
+      grid-area: Header;
+      display: grid;
+      background: #000000;      
+    }
+    .hood-crime {
+      grid-area:HoodCrime;
+      display:flex;
+      align-items:center;
+      position:relative;
+      justify-content:space-evenly;
+      background-color: #131924;
+      height:60px;
+      margin-top:40px;
+    }
+    .tc-dropdown {
+      display:flex;
+      justify-content:center;     
+      align-items:center;
+      background-color: #131924;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      height: 60px;
+      justify-content: center;
+      margin-left:20px;      
+    }
+    .th-dropdown {
+      display:flex;
+      justify-content:center;     
+      align-items:center;
+      background-color: #131924;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      height: 60px;
+      justify-content: center;
+      
+    }
+
+    .tline {
+      grid-area:LineChart;
+      margin-top:40px;
+      align-items:fill;
+      position:relative;
+      height:87%;
+      
+      
+    }
+    .dateSelect {
+      grid-area:DateRange;
+      display:flex;
+      justify-content:center;     
+      align-items:center;
+      background-color: #131924;
+      box-shadow: rgba(0,0,0,.43) 0 2px 10px;
+      box-sizing: border-box;
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      height: 60px;
+      justify-content: center;
+      
+    }
+
+    .datepicker {
+      margin-left:20px;
+      margin-right:20px;
+    }
+
+    .entity {
+      grid-area: EventDropdown;
+      margin-top:50px;  
+    }
+
+    .main-nav {
+      grid-area: 'main-nav';
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      justify-content:space-between;
+      position: relative;      
+      background-color: #000000;
+    }
+
+    .nav-li {
+      float: right;
+      list-style-type: none;
+    }
+
+    .nav-li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .header-grid {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 
+      "header-logo main-nav";
+      justify-content:stretch;
+      position:relative;
+    }
+
+    .header-logo {
+      grid-area: "header-logo";
+      font-family: Arial;
+      position:relative;
+      float: right;
+      background-color: #000000;
+      
+    }
+
+    .crime-map {
+      display: flex;
+      position:relative;
+      margin-left:25%;
+      align-items:center;
+      justify-content:center;
+      width: 50rem;
+      height:100%;      
+      grid-area: CrimeMap;
+      z-index:0;
+      margin-bottom:40px;     
+    }
+
+    .crime {
+      grid-area: CrimeDropdown;
+      display:flex;
+      position: relative;
+      object-fit:cover;
+      margin-bottom:25px;
+  
+    }
+
+
+    .horizontalbar {
+      height: 70vh;
+      width: auto;
+      column-fill: auto;
+      align-content:stretch;
+      flex-wrap:wrap;
+      grid-area:CrimeBarChart;    
+    }
+    
+
+    .choropleth-container {
+      grid-area: ChoroplethMap;
+      margin-right: 0px;
+      padding: 0px 40px 30px 40px;
+      margin: 0px 0px 0px 0px;
+    }
+
+    .neighborhood {
+      grid-area: NeighborhoodDropdown;
+      position: relative;
+      object-fit:contain;
+      margin-bottom:25px;
+    }
+
+    .bar {
+      grid-area: NeighborhoodBarChart;
+      height: 80vh;
+      width: auto;
+      column-fill: auto;
+      align-content:center;
+      flex-wrap:wrap;
+      margin-bottom:40px;    
+    }
+  }
+

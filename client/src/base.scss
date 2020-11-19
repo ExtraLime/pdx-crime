@@ -1,0 +1,193 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #17202e;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(255, 255, 255);
+  }
+  
+  .leaflet-container {
+    height: 50vh;
+    margin: 2rem auto;
+    border-radius: .25rem;
+  }
+  
+  .crime-map {
+    width: 23rem;
+  }
+  
+  .choropleth-container {
+    width: 23rem;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .dropdown-container {
+    align-items: left;
+    background-color: #131924;
+    box-shadow: rgba(0,0,0,.43) 0 2px 10px;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    height: 60px;
+    justify-content: left;
+    left: 0;
+    
+  }
+  
+  
+  label {
+    box-sizing: border-box;
+    font-size: 1.125rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  select {
+    box-sizing: border-box;
+    color:#c1ccde;
+    font-size: 1rem;
+    font-weight:400;
+    background: transparent;
+    height: 2.6rem;
+    border: 1px solid rgba(193,204,222,.2);
+    line-height: 4rem;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 8.7rem;
+    padding-left: 0;
+    text-align: left;
+    text-size-adjust: 100%;
+    width: 15rem;
+    -webkit-tap-highlight-color: (0,0,0,0)
+  }
+  
+  #use-dropdown-neighborhood {
+    margin-left: 4rem;
+  }
+  
+  .test {
+    padding: 1.75rem;
+    background: #202a3b;
+    margin: 2rem 2rem;
+    border-radius: .25rem;
+  }
+  
+  .leaflet-container, canvas {
+    width: 100%;
+    justify-content:space-around;
+    
+  }
+  
+  /* media queries */
+  @media screen and (min-width: 750px) {
+    .leaflet-container {    
+      margin-left:0px;
+      
+    }  
+  
+    .dropdown {
+      margin-left: 11rem;
+      
+      }
+  
+    #use-dropdown-neighborhood {
+      margin-left: 7rem;
+    }
+  
+    .container {
+      position: relative;
+      display: grid;
+      grid-template-rows: repeat(1fr,6 );
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 0px;
+      grid-template-areas:
+        "EventDropdown EventDropdown"  
+        "CrimeMap CrimeMap"
+        "CrimeDropdown CrimeDropdown"
+        "CrimeBarChart ChoroplethMap"
+        "NeighborhoodDropdown NeighborhoodDropdown"
+        "NeighborhoodBarChart NeighborhoodBarChart";    
+      margin: 0px auto;
+      justify-content: space-around;
+      object-fit:cover;
+      
+    }
+  
+    .crime-map {
+      display: flex;
+      width: 100%;
+      height:100%;
+      top: -100rem;
+      grid-area: CrimeMap;
+      
+      
+    }
+    
+  /*  .choropleth-container {
+      width: 23rem;
+      margin: 0 auto;
+    }*/
+  
+    .crime {
+      grid-area: CrimeDropdown;
+      display:flex;
+      position: relative;
+      object-fit:cover;
+  
+    }
+    
+    .entity {
+      grid-area: EventDropdown;
+  
+      position: relative;
+      object-fit:contain;
+      top: -180px;
+  
+    }
+    
+    .horizontalbar {
+      grid-area: CrimeBarChart;
+      height: 83%;
+      width: 45rem;
+      column-fill: auto;
+      align-content:stretch;
+      flex-wrap:wrap;    
+    }
+    
+    .choropleth-container {
+      width: 45rem;
+      grid-area: ChoroplethMap;
+      margin-right: 0px;
+      object-fit : contain;
+    }
+    
+    .bar {
+      grid-area: NeighborhoodBarChart;
+      justify-content: center;
+      align-items: center;
+      height: 90%;
+      object-fit:contain;
+    }
+    
+    .neighborhood {
+      grid-area: NeighborhoodDropdown;
+      position: relative;
+      object-fit:contain;    
+      
+      
+    }
+  }
+  
