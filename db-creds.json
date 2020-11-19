@@ -1,8 +1,0 @@
-{
-	"DBNAME":"pdxcrime",
-	"USER":"admin",
-	"HOST":"35.225.164.144",
-	"PASSWORD":"0wqzk1e3",
-	"PORT":"12301",
-	"yugaURI":"postgres://admin:0wqzk1e3@35.230.82.92:12301/pdxcrime"
-}

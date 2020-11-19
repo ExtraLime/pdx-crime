@@ -1,13 +1,12 @@
 const pg = require('pg');
 const dotenv = require('dotenv');
 dotenv.config();
-const creds = require('./db-creds.json');
 const { newGeo } = require('./newGeo.js');
 const geo = require('./data/geo-json.json');
 
 
-const client = new pg.Client(creds.yugaURI)
-console.log(client)
+const client = new pg.Client(process.env.yugaURL)
+
 
 if (!client){
   console.log("no client")
