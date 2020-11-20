@@ -5,7 +5,7 @@ const { newGeo } = require('./newGeo.js');
 const geo = require('./data/geo-json.json');
 
 
-const client = new pg.Pool({connectionString:"postgres://admin:0wqzk1e3@35.230.82.92:12301/pdxcrime"})
+const client = new pg.Pool({connectionString:process.env.yugaURI})
 
 client.connect((err, client, release) => {
   if (err) {
@@ -22,7 +22,7 @@ client.connect((err, client, release) => {
 
 
 //
-// const client = new pg.Client(process.env.yugaURI)
+// const client = new pg.Client()
 
 
 if (!client){
