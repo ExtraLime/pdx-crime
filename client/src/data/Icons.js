@@ -1,14 +1,14 @@
 import { Icon } from "leaflet";
 
 export const medical = new Icon({
-  iconUrl: "/hospital.svg",
+  iconUrl: "static/hospital.svg",
   iconSize: [25, 25]
 });
 export const police = new Icon({
-  iconUrl: "/police.svg",
+  iconUrl: "static/police.svg",
   iconSize: [25, 25]
 });
 export const fireman = new Icon({
-  iconUrl: "/fireman.svg",
+  iconUrl: "static/fireman.svg",
   iconSize: [25, 25]
 });
